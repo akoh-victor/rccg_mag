@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}    
+     
+{% block subnav %}
+<ul>
+<li>Health Talk </li>
+<li>Sport Category </li>
+<li>Youths </li>
+<li>Health Talk </li>
+</ul>
+{% endblock %} 
+
+ 
+   {% block bodyTitle %}  <h3>Manage News Content</h3>   {% endblock %}
+
+    
+    {% block bodyContent %}
+   
+       {{ include('admin/articles/_form.html.twig') }}
+       
+    {% endblock %} 
+
+ 
+  
+   {% block sideBarRightTitle %} <h3> News headlines </h3>     {% endblock %} 
+    
+    {% block sideBarRight %}
+    
+     {% if news is defined %}
+      <table class="table  table-hover">
+        <tbody>
+    {% for eachnews in news %}
+    
+            <tr>
+             <td> <a href="/admin/news/edit/{{ eachnews.id }}"> {{ eachnews.title |capitalize }} </a></td>
+            </tr>
+           
+        
+    {%  endfor %}
+    
+    </tbody>
+    </table>
+       {% endif %}
+   {% endblock %}   

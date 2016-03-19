@@ -1,0 +1,45 @@
+{% extends 'admin/base.html.twig' %}    
+     
+{% block subnav %}
+<ul>
+<li></li>
+<li> </li>
+<li></li>
+<li> </li>
+</ul>
+{% endblock %} 
+
+ 
+   {% block bodyTitle %}  <h3>Manage Events</h3>   {% endblock %}
+
+    
+    {% block bodyContent %}
+   
+       {{ include('admin/articles/_form.html.twig') }}
+       
+    {% endblock %} 
+
+ 
+  
+   {% block sideBarRightTitle %} <h3> event headlines </h3>     {% endblock %} 
+    
+    {% block sideBarRight %}
+    
+     {% if event is defined %}
+      <table class="table  table-hover">
+        <tbody>
+    {% for eachevent in event %}
+    
+            <tr>
+             <td> <a href="/admin/event/edit/{{ eachevent.id }}"> {{ eachevent.theme |capitalize }} </a></td>
+               
+                
+            </tr>
+           
+        
+    {%  endfor %}
+    
+    </tbody>
+    </table>
+       {% endif %}
+   {% endblock %}   

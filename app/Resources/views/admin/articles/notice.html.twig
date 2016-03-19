@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}    
+     
+{% block subnav %}
+    <ul>
+
+    </ul>
+{% endblock %} 
+
+ 
+   {% block bodyTitle %}  <h3>Create Notice</h3>   {% endblock %}
+
+    
+    {% block bodyContent %}
+
+        {{ include('admin/articles/_form.html.twig')  }}
+
+    {% endblock %} 
+
+ 
+  
+   {% block sideBarRightTitle %} <h3>Notice </h3>     {% endblock %}
+    
+    {% block sideBarRight %}
+
+        {% if notice is defined %}
+            <table class="table  table-hover">
+                <tbody>
+                {% for eachnotice in notice %}
+                    <tr>
+                        <td> <a href="/admin/notice/edit/{{ eachnotice.id }}"> {{ eachnotice.title |capitalize }} </a></td>
+                    </tr>
+                {%  endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% endblock %}

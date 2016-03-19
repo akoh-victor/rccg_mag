@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Redeemed Magazine{% endblock %}</title>
+        {% block stylesheets %}     
+         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style>
+            {% block style %}
+            body{background-color: aliceblue;
+                font-size: 1.5rem;
+                line-height: 1.467rem;
+                 font-family: "Segoe UI","Segoe WP",Arial,sans-serif;
+            }
+
+            {% endblock %}
+        </style>
+    </head> 
+
+    <body>
+    <div class="container-fluid">
+
+    {% block header %}
+    <header class="navbar navbar-inverse">
+		                <div class="navbar-header">
+                            <button type="button" class="navbar-toggle"
+                                    data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                {% block header_navigation_links %}
+                                    <li>
+                                        <a href="/">
+                                            <i class="fa fa-home"></i> Home
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="/about">
+                                            <i class="fa fa-about"></i> About
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="/contact">
+                                            <i class="fa fa-contact"></i> Contact Us
+                                        </a>
+                                    </li>
+                                      <li>
+                                        <a href="/login">
+                                            <i class="fa fa-open"></i> Login
+                                        </a>
+                                    </li>
+
+
+								</ul>
+							   {% endblock %}
+                        </div>
+
+
+    </header>
+    {% endblock %}
+
+
+          <div class="row">
+              <div id = "slider"  class="col-sm-6" > {% block slider %} {% endblock %} </div>
+              <div  id = "logo" class="col-sm-6" >{% block torchLogo %}{% endblock %}</div>
+              <div  class ="col-sm-3">{% block top %}{% endblock %}</div>
+              <div  class ="col-sm-3">{% block ads %}{% endblock %}</div>
+              <div class="row"> {% block badge %}  {% endblock%}</div>
+		  </div>{# end of row #}
+
+         {# headlines #}
+         <div class="row">
+             <div>{% block moreNews %}{% endblock %} </div>
+             <div>{% block moreTestimonies %} {% endblock %}  </div>
+             <div>{% block moreNotice %}{% endblock %} </div>
+             <div>{% block mostRead %}{% endblock %} </div>
+         </div>{# end of row #}
+
+         <div class="row">
+             <div  class="col-md-12" > {% block newsNav %} {% endblock %}</div>
+             <div  class="col-sm-3"> {% block newsBadgeRight %} {% endblock %} </div>
+             <div class="col-sm-3"> {% block newsStoriesRight %}{% endblock %} </div>
+             <div  class="col-sm-3">{% block newsStoriesLeft %}{% endblock %}</div>
+             <div  class="col-sm-3"> {% block newsBadgeLeft %} {% endblock %}</div>
+         </div>{# end of row #}
+
+
+          <div class="row">
+              <div  class="col-md-12" >  {% block testimonyNav %}{% endblock %}</div>
+              <div> {% block testimonies %}{% endblock %} </div>
+              <div  class="col-sm-12"> {% block testimonyBadge %}{% endblock %}</div>
+          </div>
+
+
+        <div class="container-fluid">{% block row %} {% endblock %}</div>
+         <div class="container-fluid">{% block viewArea %} {% endblock %}</div>
+
+    <div class= "navbar navbar-default navbar-bottom"> {% block footer %} <p class="navbar navbar-text"> XtekTelecom </p> {% endblock %} </div>
+
+      </div>{# end of  fluid con2ainer #}
+        {% block javascripts %} <script src="{{ asset('js/app.js') }}"></script> {% endblock %}
+
+
+    </body>
+</html>

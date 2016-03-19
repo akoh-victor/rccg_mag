@@ -1,0 +1,45 @@
+{% extends 'admin/base.html.twig' %}    
+     
+{% block subnav %}
+<ul>
+<li></li>
+<li> </li>
+<li></li>
+<li> </li>
+</ul>
+{% endblock %} 
+
+ 
+   {% block bodyTitle %}  <h3>Create Testimonies</h3>   {% endblock %}
+
+    
+    {% block bodyContent %}
+   
+       {{ include('admin/articles/_form.html.twig') }}
+       
+    {% endblock %} 
+
+ 
+  
+   {% block sideBarRightTitle %} <h3>Testimonies </h3>     {% endblock %} 
+    
+    {% block sideBarRight %}
+    
+     {% if testimony is defined %}
+      <table class="table  table-hover">
+        <tbody>
+    {% for eachtestimony in testimony %}
+    
+            <tr>
+             <td> <a href="/admin/testimony/edit/{{ eachtestimony.id }}"> {{ eachtestimony.title |capitalize }} </a></td>
+               
+                
+            </tr>
+           
+        
+    {%  endfor %}
+    
+    </tbody>
+    </table>
+       {% endif %}
+   {% endblock %}   

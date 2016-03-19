@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+
+
+
+ {% block style %}
+     body{background-color:white}
+ {% endblock %}
+ {% block viewArea %}
+
+     {% if origin == 'News' %}
+<div class="container-fluid">
+
+      <h2>{{ newsResorces.title |title }}</h2>
+  <hr />
+
+     <div class="row">
+         <div class="col-md-2">
+            <div>adver2 goes here</div>
+         </div>
+         <div class="col-md-7">
+             <div>
+                      <img src="{{ asset(' uploads/images/news/'~ newsResorces.file) }}" alt="Embeded Image" height="200px" width="auto"/>
+                      <p>{{  newsResorces.article |nl2br }} </p>
+
+                 <hr />
+
+             </div>
+         </div>
+         <div class="col-md-3">
+             <div class="panel panel-red">
+                 <h3>Up Next </h3>
+                 <hr />
+                 {% if nextNews %}
+                     {% for news in nextNews %}
+
+                         <div style = "height:100px" class="wrapper">
+                             <a href="/news/{{ news.category.name }}/{{ news.id }}">
+                                 <div class=" pull-left">
+                                     <img alt="embeded image" src="{{ asset(' uploads/images/news/'~ news.file) }}"
+                                          style="padding-right: 15px" width="150px" height="90px"/>
+                                 </div>
+                                 <div style="width:auto; color: #161f29;padding-top: 15px; padding-left:  10px">
+                                     <strong> {{ news.title |title }}</strong>
+                                 </div>
+                             </a>
+                         </div>
+
+                     {% endfor  %}
+                 {% endif %}
+                 {% if newsResorces %}
+                  <h3>More in {{ newsResorces.category.name }}  </h3>
+                 <hr />
+                     {% for news in moreNews %}
+                         <div style = "height:100px" class="wrapper">
+                             <a href="/news/{{ news.category.name }}/{{ news.id }}">
+                                 <div class=" pull-left">
+                                     <img alt="embeded image" src="{{ asset(' uploads/images/news/'~ news.file) }}"
+                                          style="padding-right: 15px" width="150px" height="90px"/>
+                                 </div>
+                                 <div style="width:auto; color: #161f29;padding-top: 15px; padding-left:  10px">
+                                     <strong> {{ news.title |title }}</strong>
+                                 </div>
+                             </a>
+                         </div>
+                     {% endfor  %}
+
+                 {% endif %}
+                 <h3 class="caption"> <small>Most Read </small></h3>
+                 {% for news in mostRead %}
+                     <div style = "height:100px" class="wrapper">
+                         <a href="/news/{{ news.category.name }}/{{ news.id }}">
+                             <div class=" pull-left">
+                                 <img alt="embeded image" src="{{ asset(' uploads/images/news/'~ news.file) }}"
+                                      style="padding-right: 15px" width="150px" height="90px"/>
+                             </div>
+                             <div style="width:auto; color: #161f29;padding-top: 15px; padding-left:  10px">
+                                 <strong> {{ news.title |title }}</strong>
+                             </div>
+                         </a>
+                     </div>
+                 {% endfor  %}
+             </div>
+         </div>
+     </div>
+</div>
+
+     {% elseif origin == 'Testimony' %}
+         <div class="container-fluid">
+
+             <h2>{{ testimony.title |title }}</h2>
+             <hr />
+
+             <div class="row">
+                 <div class="col-md-2">
+                     <div>adver2 goes here</div>
+                 </div>
+                 <div class="col-md-7">
+                     <div>
+                         <img src="{{ asset(' uploads/images/testimony/'~ testimony.image) }}" alt="Embeded Image" height="200px" width="auto"  />
+                         <p>{{  testimony.detail |raw }} </p>
+
+                         <hr />
+
+                     </div>
+                 </div>
+                 <div class="col-md-3">
+                     <div class="panel panel-red">
+
+
+
+                         {% if moreTestimony %}
+                             <h3><small> More Testimonies </small></h3>
+                             <hr />
+                             {% for testimony in moreTestimony %}
+
+                                 <a href="/testimony/{{ testimony.id }}">
+
+                                     <div style="width:auto; color: #161f29;padding-top: 15px; padding-left:  10px">
+                                         <strong> {{ testimony.title |title }}</strong>
+                                     </div>
+                                 </a>
+                             {% endfor  %}
+
+                         {% endif %}
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     {% elseif origin == 'Notice' %}
+         <div class="container-fluid">
+
+             <h2>{{ notice.title |title }}</h2>
+             <hr />
+
+             <div class="row">
+                 <div class="col-md-2">
+                     <div>adver2 goes here</div>
+                 </div>
+                 <div class="col-md-7">
+                     <div>
+                         <p>{{ notice.detail |raw }} </p>
+                         <hr />
+
+                     </div>
+                 </div>
+                 <div class="col-md-3">
+                     <div class="panel panel-red">
+
+
+
+                         {% if moreNotice %}
+                             <h3>More Notice  </h3>
+                             <hr />
+                             {% for notice in moreNotice %}
+
+                                 <a href="/notice/{{ notice.id }}">
+                                     <div style="width:auto; color: #161f29;padding-top: 15px; padding-left:  10px">
+                                         <strong> {{ notice.title |title }}</strong>
+                                     </div>
+                                 </a>
+                                 <hr class="success"/>
+                             {% endfor  %}
+
+                         {% endif %}
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     {% else %}
+     {% endif %}
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
