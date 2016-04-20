@@ -1,4 +1,4 @@
-rccg_mag
+Documentation
 ========
 
-A Symfony project created on August 31, 2015, 5:26 am.
+Online magazine app based on symfony framework.
